@@ -30,6 +30,16 @@ namespace Mission13.Controllers
 
             return View(blah);
         }
+        
+        public IActionResult ContactInfo()
+        {
+
+            var blah = _context.Bowlers
+                .Include(x => x.Team)
+                .ToList();
+
+            return View(blah);
+        }
 
          
         public IActionResult TeamView(string TeamName)

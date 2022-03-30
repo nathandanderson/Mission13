@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Contact Info";
+}
+
+@model List<Bowler>
+
+<h1>Bowler Contact List</h1>
+
+@foreach (var b in Model)
+            {
+<div class="card">
+    <h5>@b.BowlerFirstName @b.BowlerMiddleInit @b.BowlerLastName ~ @b.Team.TeamName</h5>
+    <h7>@b.BowlerAddress </h7>
+    <h7>@b.BowlerCity, @b.BowlerState @b.BowlerZip</h7>
+    <h7>@b.BowlerPhoneNumber</h7>
+</div>
+            }
