@@ -22,6 +22,7 @@ namespace Mission13.Controllers
         public IActionResult Index()
         {
             ViewBag.Teams = _context.Teams.OrderBy(x => x.TeamName).ToList();
+            ViewBag.Name = "All Bowlers";
 
             var blah = _context.Bowlers
                 .Include(x => x.Team)
@@ -31,17 +32,15 @@ namespace Mission13.Controllers
         }
 
          
-        public IActionResult TeamView(int TeamID)
+        public IActionResult TeamView(string TeamName)
         {
             ViewBag.Teams = _context.Teams.OrderBy(x => x.TeamName).ToList();
 
-            int drugs = Convert.ToInt32(RouteData?.Values["teamid"]);
-            var drugz = _context.Teams.Single(x => x.TeamID == drugs);
-            ViewBag.Name = drugz;
+            ViewBag.Name = RouteData?.Values["teamname"];
 
             var blah = _context.Bowlers
                 .Include(x => x.Team)
-                .Where(x => x.TeamID == TeamID)
+                .Where(x => x.Team.TeamName == TeamName)
                 .ToList();
             return View("Index", blah);
         }

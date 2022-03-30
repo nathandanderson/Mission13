@@ -59,7 +59,7 @@ namespace Mission13
 
 
                 endpoints.MapControllerRoute("Team",
-                    "{teamid}",
+                    "{teamname}",
                     new { Controller = "Home", action = "TeamView" });                
                 
                 endpoints.MapControllerRoute(
